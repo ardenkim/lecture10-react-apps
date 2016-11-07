@@ -31,6 +31,10 @@ class MovieTable extends React.Component {
   render() {
 
     //can interact with this.props here
+    var rows = this.props.movies.map(function(movieObj){  //1
+      // return <MovieRow />;  //2
+      return <MovieRow movie={movieObj} />;  //4
+    });
 
     return (
       <table className="table table-condensed">
@@ -38,7 +42,7 @@ class MovieTable extends React.Component {
           <tr><th className="col-xs-1">Poster</th><th className="col-xs-4">Title</th><th>Released</th></tr>
         </thead>
         <tbody>
-          <MovieRow />
+            {rows} //3
         </tbody>
       </table>      
     );
@@ -49,9 +53,9 @@ class MovieRow extends React.Component {
   render() {
     return (
       <tr>
-        <td><img className="poster-lg" src="movie poster_url" alt="poster for movie title"/></td>
-        <td>Movie Title</td>
-        <td>Movie Release Date</td>
+        <td><img className="poster-lg" src={this.props.movie.poster_url} alt="poster for movie title"/></td> //7
+        <td>{this.props.movie.title}</td> //5
+        <td>{this.props.movie.release_date}</td> //6
       </tr>
     );
   }

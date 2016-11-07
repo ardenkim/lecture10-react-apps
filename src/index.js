@@ -4,6 +4,7 @@ import App from './App';
 
 //css files
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(
   <App />,
