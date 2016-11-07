@@ -1,5 +1,5 @@
 import React from 'react';
-
+import MovieController from './MovieController';
 var SAMPLE_MOVIES = [
   {
     title: "Star Wars: The Force Awakens", 
@@ -19,7 +19,7 @@ class App extends React.Component {
           <h1>Movie Search</h1>
         </header>
         <main>
-          <MovieTable movies={SAMPLE_MOVIES} />
+          <MovieTable movies={this.props.data.results} />
         </main>
       </div>
     );
@@ -51,9 +51,12 @@ class MovieTable extends React.Component {
 
 class MovieRow extends React.Component {
   render() {
+
+      var posterUrl = MovieController.getPosterUrl(this.props.movie);
+
     return (
       <tr>
-        <td><img className="poster-lg" src={this.props.movie.poster_url} alt="poster for movie title"/></td>
+        <td><img className="poster-lg" src={posterUrl} alt="poster for movie title"/></td>
         <td>{this.props.movie.title}</td>
         <td>{this.props.movie.release_date}</td>
       </tr>
